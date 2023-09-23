@@ -19,12 +19,28 @@ More information about FLAME is available at http://flame.is.tue.mpg.de.
 For questions regarding the PyTorch implementation please contact soubhik.sanyal@tuebingen.mpg.de
 """
 
+import imageio
 import numpy as np
 import pyrender
 import torch
 import trimesh
 
 from flame_pytorch import FLAME, get_config
+
+def render_by_scene(scene, index):
+    # 创建相机
+    camera = pyrender.PerspectiveCamera(yfov=np.pi/6.0, aspectRatio=1.0)
+    camera_pose = np.eye(4)
+    camera_pose[:3, 3] = [0, 0, 2]
+    scene.add(camera, pose=camera_pose)
+
+    # 创建渲染器
+    renderer = pyrender.OffscreenRenderer(viewport_width=640, viewport_height=480)
+
+    # 渲染场景并保存图像
+    color, depth = renderer.render(scene)
+    img_str = 'output_' + str(index) + '.png'
+    imageio.imwrite(img_str, color)
 
 config = get_config()
 radian = np.pi / 180.0
@@ -86,4 +102,4 @@ for i in range(8):
     tfs[:, :3, 3] = joints
     joints_pcl = pyrender.Mesh.from_trimesh(sm, poses=tfs)
     scene.add(joints_pcl)
-    pyrender.Viewer(scene, use_raymond_lighting=True)
+    render_by_scene(scene, i)
