@@ -27,6 +27,9 @@ import trimesh
 
 from flame_pytorch import FLAME, get_config
 
+print(torch.__version__)
+print(torch.cuda.is_available())
+
 def render_by_scene(scene, index):
     # 创建相机
     camera = pyrender.PerspectiveCamera(yfov=np.pi/6.0, aspectRatio=1.0)
