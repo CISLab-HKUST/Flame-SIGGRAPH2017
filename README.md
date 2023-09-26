@@ -1,3 +1,30 @@
+# For CIS_LAB
+## FLAME_PyTorch（已跑通）
+
+环境：
+```
+- cuda==11.8
+- torch==2.0.1+cu118
+- torchaudio==2.0.2+cu118
+- torchvision==0.15.2+cu118
+- python==3.8
+```
+
+conda等环境配置：参考配置的[博客文件](https://www.jianshu.com/p/05a7b3101a9b)
+
+项目配置：
+
+```
+cd FLAME_pytorch
+sh run_config.sh
+```
+
+配置完毕后，运行
+```
+python3 main.py
+```
+
+
 # FLAME: Articulated Expressive 3D Head Model (PyTorch)
 
 This is an implementation of the [FLAME](http://flame.is.tue.mpg.de/) 3D head model in PyTorch.
