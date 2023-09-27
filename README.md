@@ -10,13 +10,19 @@
 - python==3.8
 ```
 
-conda等环境配置：参考配置的[博客文件](https://www.jianshu.com/p/05a7b3101a9b)
-
-项目配置：
+项目配置（会自动生成一个新的conda虚拟环境执行）：
 
 ```
 cd FLAME_pytorch
 sh run_config.sh
+```
+
+conda环境配置：
+```
+conda activate py3.8_FLAME_PyTorch
+export DISPLAY=:99
+
+conda install -c conda-forge libstdcxx-ng
 ```
 
 配置完毕后，运行
@@ -24,6 +30,7 @@ sh run_config.sh
 python3 main.py
 ```
 
+如还有问题，参考配置的[博客文件](https://www.jianshu.com/p/05a7b3101a9b)
 
 # FLAME: Articulated Expressive 3D Head Model (PyTorch)
 
